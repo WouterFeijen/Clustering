@@ -63,6 +63,9 @@ class KMeans(BaseClustering):
     
     def predict(self,X):
         """Assign new data points X to the self.k clusters after being fit."""
+        if not hasattr(self, "labels_") or not hasattr(self, "centroids_"):
+            raise ValueError("Model has not been fit yet. Please call 'fit' before 'predict'.")
+        
         distances = np.linalg.norm(X[:,None]-self.centroids_,axis=2)
         return np.argmin(distances,axis=1)
 
