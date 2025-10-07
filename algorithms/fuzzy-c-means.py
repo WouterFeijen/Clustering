@@ -38,7 +38,7 @@ class FCM(BaseClustering):
         self.U_ = U
         self.V_ = V
         return self
-    
+
     def predict(self,X):
         """Assign fuzzy membership values from each cluster k to new data points X after being fit."""
         if not hasattr(self, "U_") or not hasattr(self, "V_"):
