@@ -68,10 +68,10 @@ class FCM(BaseClustering):
         denominator = Um.sum(axis=1, keepdims=True)
         return numerator / denominator
 
-    def update_U(self,Y,V,A=None):
+    def update_U(self,X,V,A=None):
 
         # get squared distances
-        d2 = self.a_norm_distances(Y=Y,V=V,A=A)
+        d2 = self.a_norm_distances(X=X,V=V,A=A)
         d2 = np.fmax(d2,1e-10) # avoid division by zero
         
         exponent = 1.0 / (self.m-1) # use 1.0 instead of 2.0 bc distances are squared
