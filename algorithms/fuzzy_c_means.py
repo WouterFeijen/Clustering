@@ -80,8 +80,8 @@ class FCM(BaseClustering):
         ratio = (d2[:,None,:] / d2[None,:,:]) ** exponent
         
         # sum and take inverse to get memberships
-        return 1.0 / np.sum(ratio, axis=0)
-    
+        return 1.0 / np.sum(ratio, axis=1)
+
     def a_norm_distances(self,X,V,A=None):
 
         if A is None:

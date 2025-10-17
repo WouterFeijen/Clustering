@@ -80,7 +80,7 @@ class FCM(BaseClustering):
         ratio = (d2[:,None,:] / d2[None,:,:]) ** exponent
         
         # sum and take inverse to get memberships
-        return 1.0 / np.sum(ratio, axis=0)
+        return 1.0 / np.sum(ratio, axis=1)
     
     def a_norm_distances(self,X,V,A=None):
 
@@ -98,6 +98,3 @@ class FCM(BaseClustering):
         diff = X[None,:,:] - V[:,None,:] # vector diffs y_k - v_i
         # (c,N,d) @ (d,d) @ (c,N,d) -> (c,N)
         return np.einsum("cnd,df,cnf->cn",diff, A, diff)
-    
-
-
